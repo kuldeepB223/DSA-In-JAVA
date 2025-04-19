@@ -1,0 +1,166 @@
+******NODE CLASS*****
+
+package DynamicQueue;
+
+public class Node {
+	private Node next;
+	private int data;
+	
+	public Node() {
+		next=null;
+		data=0;
+	}
+
+	public Node getNext() {
+		return next;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+
+	public int getData() {
+		return data;
+	}
+
+	public void setData(int data) {
+		this.data = data;
+	}
+}
+
+
+*****QUEUE CLASS*******
+
+package DynamicQueue;
+
+import java.util.Scanner;
+
+public class DynamicQueue {
+
+private Node front;
+private Node rear;
+Scanner sc = new Scanner(System.in);
+public DynamicQueue() {
+	front=rear=null;
+}
+
+public Node createnode(int value) {
+	Node newnode= new Node();
+	
+	newnode.setData(value);
+	newnode.setNext(newnode);
+	return newnode;
+}//createnode
+
+public boolean isEmpty() {
+	if(front==null && rear ==null) {
+		return true;
+	}
+	else {
+		return false;
+	}
+		
+}//isEmpty
+
+
+public void enqueue(int v) {
+		Node newNode = createnode(v);
+	
+	if(isEmpty()) {
+		front=rear=newNode;
+	}
+	else {
+		rear.setNext(newNode);
+		rear=newNode;
+		newNode.setNext(null);
+	}
+		
+}//enqueue
+
+public int dequeue() {
+	int value =-1;
+	Node temp=null;
+	
+	if(!isEmpty()) {
+		value=front.getData();
+		front=front.getNext();
+		temp.setNext(null);
+		System.out.println("\ndequeue value"+" "+value);
+		if(front==null) {
+			rear=null;
+			temp=null;
+		}
+	}
+	return value;
+}//dequeue
+
+public void display() {
+	Node temp=front;
+	
+	if(temp==null) {
+		System.out.println("\nQueue is Empty");
+	}
+	else {
+		while(temp!=rear.getNext()) {
+			System.out.println(temp.getData()+"->");
+			temp=temp.getNext();
+		}
+		System.out.print("null");
+	}
+	
+}//display
+}//class
+
+
+
+
+
+*****CLIENT FILE**********
+
+package DynamicQueue;
+
+import java.util.Scanner;
+
+public class ClientDynamicQueue {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		DynamicQueue q = new DynamicQueue();
+		Scanner sc= new Scanner(System.in);
+		int option = 0;
+		int value=0;
+		do {
+			
+			
+			System.out.println("-----------Menu----------");
+			System.out.println("\n1:enqueue"+"\n2:dequeue"+"\n11:display"+"\n0:exit");
+			System.out.println("\nEnter your choice:");
+			option =sc.nextInt();
+			switch(option) {
+			case 1:
+				System.out.println("\nEnter data:");
+				int p=sc.nextInt();
+				q.enqueue(p);
+				System.out.println("\ndata entered successfully");
+				break;
+			case 2:
+				if(q.dequeue()==-1) {
+					System.out.println("\nQueue is Empty");
+				}
+				else
+					
+					System.out.println("\ndata removed successfully");
+				break;
+			case 11:
+				System.out.println("\n************************");
+				q.display();
+				System.out.println("\n************************");
+				break;
+			case 0:
+				System.exit(0);
+			}
+			
+		}while(option!=0);
+	}
+
+}

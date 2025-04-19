@@ -1,0 +1,55 @@
+package Stack;
+
+import java.util.Scanner;
+
+class StackAtoZ {
+	private int size;
+	private char stk[];
+	private int top;
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public StackAtoZ()
+	{
+		size = 0;
+		stk =new char[size];
+		top = -1;
+	}
+	
+	//method to create new stack
+	public void initStack()
+	{
+		System.out.println("Enter size for stack:: ");
+		size = sc.nextInt();
+		stk  = new char[this.size];
+		this.top = -1;
+	}
+	
+	//method to insert characters
+	public void push(char value)
+	{
+			top++;
+			stk[top] = value;
+	}
+	
+	//method to remove characters from stack
+	public int pop()
+	{int value=-1;
+	if(!isEmpty())
+	{
+		value = stk[top];
+		top--;
+	}
+	else
+		System.out.println("\n\tSTACK UNDERFLOW....");
+	}
+		return value;
+	}
+	
+	public void display()
+	{
+		for(int i=top; i>-1 ; i--)
+			System.out.print("\n\t"+stk[i]);
+
+	}
+}

@@ -1,0 +1,69 @@
+package Queue;
+
+import java.util.Scanner;
+
+public class QueueArray {
+
+	int size;
+	int front;
+	int rear;
+	int que[];
+	
+	Scanner sc = new Scanner(System.in);
+	
+	QueueArray(){
+		size=-1;
+		front=-1;
+		rear=-1;
+		que = new int[size];
+	}
+	
+	public void initQueue() {
+		System.out.println("Enter size of array");
+		size = sc.nextInt();
+		que = new int[size];
+		front =-1;
+		rear =-1;
+	}
+	public void enQue(int value) {
+		if(!isfull()) {
+			rear++;
+			que[rear] = value;
+		}else {
+			System.out.println("queue is full");
+		}
+	}
+	public void deQue() {
+		int value =0;
+		if(!isempty()) {
+			front++;
+			value = que[front];
+		}else{
+			System.out.println();
+		}
+	}
+	public boolean isfull() {
+		if(rear == size-1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public boolean isempty() {
+		if(rear == -1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public void display() {
+		if(!isempty()) {
+			for(int i=0; i<=rear; i++) {
+				System.out.println(que[i]);
+			}
+		}else {
+			System.out.println("Queue is empty");
+		}
+	}
+	
+}

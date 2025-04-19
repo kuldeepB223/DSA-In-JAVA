@@ -1,0 +1,53 @@
+package c2stack_Package;
+
+public class C2StackClass {
+	private int size;
+	private int stk[];
+	private int top1;
+	private int top2;
+	
+	public C2StackClass(){
+		size=0;
+		stk = new int[size];
+		top1=-1;
+		top2=size;
+	}
+	public void initStack() {
+		this.size=size;
+		stk = new int[size];
+		top1=-1;
+		top2 = size;
+	}
+	public boolean isfull() {
+		if(top2 ==  top1+1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public boolean isempty() {
+		if(top1==-1 && top2==size) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public void push1(int value) {
+		if(!isfull()) {
+			top1++;
+			top1 = value;
+		}else {
+			System.out.println("Stack is full");
+		}
+	}
+	public int pop1() {
+		int value = 0;
+		if(!isempty()) {
+			value = top1;
+			top1--;
+		}else {
+			System.out.println("stack is empty");
+		}
+		return value;
+	}
+}

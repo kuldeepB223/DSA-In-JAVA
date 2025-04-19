@@ -1,0 +1,14 @@
+package QuickSort;
+
+public class QuickSorting {
+
+	int size;
+	int arr[];
+	
+	QuickSorting(int size){
+		this.size=size;	
+	}
+	
+	
+	
+}

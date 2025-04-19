@@ -1,0 +1,16 @@
+package Stack;
+
+import java.util.Scanner;
+
+class StackAtoZ {
+	Scanner sc = new Scanner(System.in);
+	private int top =-1;
+	private int size = sc.nextInt();
+	
+	
+	int arr[] = new int(size);
+		
+	public void initStack() {
+		
+	}
+}

@@ -1,0 +1,44 @@
+//package singlyLL;
+//
+//public class empNode {
+//	private int data;
+//	private Node next;
+//	
+//	public empNode(){
+//		data = 0;
+//		next = null;
+//	}
+//	
+//	public int getData() {
+//		return data;
+//	}
+//	public void setData(int value) {
+//		data = value;
+//	}
+//	
+//	public Node getnext() {
+//		return next;
+//	}
+//	public void setnext(Node newnode) {
+//		next = newnode;
+//	}
+//	public String stringtostring() {
+//		return data;
+//	}
+//}
+
+
+
+package singlyLL;
+
+public class empNode{
+	private Employee data;
+	private Node next;
+	
+	public empNode(){
+		data = new Employee();
+		next = null;
+	}
+	
+	public emp
+}

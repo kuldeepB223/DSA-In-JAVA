@@ -1,0 +1,27 @@
+package singlyLL;
+
+public class Node {
+	private int data;	// value of current node
+	private Node next;	// stores address of next node // it is reference of next node.
+	
+	public Node() {		// constructor
+		data = 0;
+		next = null;
+	}
+	
+	public int getData() {		// for give value of private data member which is data
+		return data;
+	}
+	
+	public void setData(int value) {	// it set user input value of private data member
+		data = value;
+	}
+	
+	public Node getnext() {  // it returns address of next node which is in 1st node.
+		return next;		 // node is a reference of next node so method datatype is Node.
+	}
+	
+	public void setNext(Node newnode) {
+		next = newnode;
+	}
+} //class

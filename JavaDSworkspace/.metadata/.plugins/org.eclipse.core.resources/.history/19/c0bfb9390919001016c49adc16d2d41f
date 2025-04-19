@@ -1,0 +1,15 @@
+package singlyLL;
+
+public class Node {
+	private int data;	// value of current node
+	private int next;	// address of next node
+	
+	public Node() {		// constructor
+		data = 0;
+		next = null;
+	}
+	
+	public int getData() {		// for give value of private data member which is data
+		return data;
+	}
+}

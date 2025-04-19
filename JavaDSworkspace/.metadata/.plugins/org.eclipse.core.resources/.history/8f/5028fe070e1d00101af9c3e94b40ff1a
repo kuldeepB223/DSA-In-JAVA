@@ -1,0 +1,54 @@
+package c2stack_Package;
+
+import java.util.Scanner;
+
+public class C2StackMainClass {
+
+	public static void main(String[] args) {
+		C2StackClass c2 = new C2StackClass();
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter size of array - ");
+		int size = sc.nextInt();
+		c2.initStack(size);
+		
+		int choice=0;
+		do {
+			
+			System.out.println("-----------------------------------------------------------------------------------------------------------");
+			System.out.println("Enter choice - ");
+			System.out.println("1.Push in stack 1\n 2.Push in stack 2\n 3.pop in stack 1\n 4.pop in stack 2\n 5.display\n 0.Exit");
+			choice=sc.nextInt();
+			
+			switch(choice) {
+				case 1:
+					System.out.println("Enter element to insert in stack 1 -> ");
+					c2.push1(sc.nextInt());
+					break;
+					
+				case 2:
+					System.out.println("Enter element to insert in stack 2 -> ");
+					c2.push2(sc.nextInt());
+					break;
+					
+				case 3:
+					int value1 = c2.pop1();
+					System.out.println(value1 + " is popped from array. ");
+					break;
+					
+				case 4:
+					int value2 = c2.pop2();
+					System.out.println(value2 + " is popped from array. ");
+					break;
+					
+				case 5:
+					c2.display();
+					
+				case 0:
+					System.exit(0);
+			}
+			
+			System.out.println("-----------------------------------------------------------------------------------------------------------");
+		}while(choice !=0);	}
+
+}

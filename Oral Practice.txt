@@ -1,0 +1,51 @@
+what is data structure?
+DS means efficient way to store data.
+Data structure is way of collecting and organizing data in such a way that can perform operations on this data in efficient way.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+need of DS - 
+*  storing data
+*  memory management
+*  problem solving 
+*  scalability -> need efficient DS bcz size of data can be shrink or grow.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Types of DS -
+
+*  Linear DS
+	** Dynamic -
+	   	* Stack		- stack using array, dynamic stack
+	   	* Queue		- queue using array, dynamic queue
+	   	* Linked List	- singly LL (data, next),  Doubly LL (previous, data, next), Circular LL (singly circularLL, doubly circularLL)
+	** Static -
+	   	* Array - size is fixed
+
+*  Non-Linear DS 
+	** Graph
+	** Tree
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Stack - Last In First Out (LIFO)
+	In stack push is used for insert data and pop is used for delete data.
+	In stack we can able to push and pop elements only from top.
+	If top is -1 then stack is empty.
+	If top is size-1 then stack is full.
+
+Queue - First In First Out (FIFO)
+	In queue enQueue is use for inserting elements and deQueue is used for deleting elements.
+	In queue we can able to enqueue data from rear end and dequeue data from front side.
+	Initially both are -1. 
+	The main disadvantage of Queue data structure is once we dequeue data then we cannot able to reuse of Queue.
+	To overcome of this disadvantage we use circular queue.
+
+Linked List - 
+	Singly LL
+		Node -> data, next
+
+	Doubly LL
+		Node -> previous, data, next

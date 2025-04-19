@@ -1,0 +1,49 @@
+package DoublyLinkedList;
+
+import java.util.Scanner;
+
+public class MainDoublyLL {
+
+	public static void main(String[] args) {
+		int choice = 0;
+		DoublyLL dll = new DoublyLL();
+		Scanner sc = new Scanner(System.in);
+		
+		int option = 0;
+		do {
+			System.out.println("--------------------------Menu---------------------------");
+			System.out.println("1. Add at start \n 2. Add at End \n 3. Add at Mid \n 11.display \n 0. exit");
+			//System.out.println("1. Add at start \n 2. Add at End \n 3. Add at Mid \n 4.display \n 0. exit");
+			System.out.println("Enter your choice : ");
+			option = sc.nextInt();
+			
+			switch(option) {
+				case 1: 
+					dll.addAtStart();
+					break;
+					
+				case 2:
+					dll.addAtEnd();
+					break;
+					
+				case 3:
+					System.out.println("Enter value to input - ");
+					int value = sc.nextInt();
+					
+					dll.addAtMid(value);
+					break;
+				
+					
+				//case 4:
+					
+				case 11:
+					dll.display();
+					break;
+				case 0: 
+					System.exit(0);
+			}
+	 
+		}while(option != 0);
+	}
+
+}

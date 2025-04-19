@@ -1,0 +1,65 @@
+package Stack;
+
+public class StackArray {
+	
+	int size;
+	int []arr;
+	int top;
+	
+	StackArray(){
+		size=0;
+		arr=new int[size];
+		top=-1;
+	}
+	
+	public void  initStack() {
+	//	System.out.println("Enter size");
+		size = 5;
+		arr = new int[size];
+		this.top = -1;
+	}
+	
+	public boolean isFull() {
+		if(top == size-1)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean isEmpty() {
+		if(top == -1)
+			return true;
+		else
+			return false;
+	}
+	
+	public void push(int value) {
+		if(!isFull()) {
+			top++;
+			arr[top] = value;
+			
+		}else {
+			System.out.println("Stack is full");    // overflow
+		}
+	}
+	public int pop() {
+		int value =-1;
+		if(!isEmpty()) {
+			value = arr[top];
+			top--;
+		}else {
+			System.out.println("stack is empty"); 		// underflow	
+		}
+		return value;
+	}
+	public void display() {
+		if(!isEmpty()) {
+			for(int i=top; i>-1; i--) {
+				System.out.println(arr[i]);
+			}
+		}else {
+			System.out.println("stack is empty");
+		}
+	}
+	
+}

@@ -1,0 +1,22 @@
+package Stack;
+
+import java.util.Scanner;
+
+class StackAtoZ {
+	Scanner sc = new Scanner(System.in);
+	private int top =-1;
+	int size;
+	int arr[];
+	
+	StackAtoZ(){
+		System.out.println("Enter size");
+		size = sc.nextInt();
+	}
+	
+	public void initStack() {
+		if(top != size-1) {
+			top++;
+			//top = 
+		}
+	}
+}

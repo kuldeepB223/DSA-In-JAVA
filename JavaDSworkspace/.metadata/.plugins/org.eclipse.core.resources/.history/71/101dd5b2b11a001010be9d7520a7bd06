@@ -1,0 +1,15 @@
+package DynamicStack;
+
+import java.util.Scanner;
+
+public class Que2Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		Que2 q = new Que2();
+		
+		
+	}
+
+}

@@ -1,0 +1,39 @@
+package DynamicStack;
+
+public class Que2 {
+	private Node top;
+	
+	Que2(){
+		top = null;
+	}
+	
+	public boolean isEmpty() {
+		if(top == null)
+			return true;
+		else
+			return false;
+	}
+	
+	public void push(char ch) {
+		Node newnode = new Node();
+		if(isEmpty()) {
+			top = newnode;
+		}else {
+			newnode.setnext(newnode);
+			top = newnode;
+		}
+	}
+	public void display() {
+		String str = " ";
+		Node temp = top;
+		//if(!isEmpty()) {
+			while(temp != null) {
+				str = str +temp.getdata();
+				//System.out.println(temp.getdata());
+				temp = temp.getnext();
+				str = str+ " ";
+			}
+			System.out.println(str);
+		//}
+	}
+}

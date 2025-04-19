@@ -1,0 +1,23 @@
+package SinglyLinkedList;
+
+import java.util.Scanner;
+
+public class SinglyLinkedList {
+	private Node head;
+	
+	public SinglyLinkedList() {
+		head = null;
+	}
+	
+	public Node createNewnode() {
+		Node newnode = new Node();
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter data - ");
+		newnode.setdata(sc.nextInt());
+		newnode.setnext(null);
+		
+		return newnode;
+	}
+	
+}

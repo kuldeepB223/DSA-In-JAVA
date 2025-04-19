@@ -1,0 +1,75 @@
+package sorting;
+//
+import java.util.Scanner;
+//
+public class InsertionSort {
+//	
+//	public static void sort(int []arr, int size) {
+//		for(int i=1; i<size; i++) {
+//			int small = arr[i];
+//			for(int j=i-1; j<-1 && arr[j]>small; j++) {
+//				arr[j+1] = arr[j];			
+//			}
+//			arr[i+1] = small;
+//		}
+//	}
+//
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("Enter size of array - ");
+//		int size = sc.nextInt();
+//		int []arr = new int[size];
+//		
+//		for(int i=0; i<size; i++) {
+//			arr[i]=sc.nextInt();
+//		}
+//		
+//		sort(arr, size);
+//	}
+//
+	
+	
+	public static void sort(int[] arr) {
+		int size=arr.length;
+		for(int i=0;i<size;i++) {
+			int small=arr[i];
+			int j=i-1;
+			for(j=i-1;j>-1&&arr[j]>small;j--) {
+				arr[j+1]=arr[j];
+			}//inner-loop
+			arr[j+1]=small;
+		}//outer-loop
+		
+	}//sort
+	
+	public static void printArray(int[] arr) {
+		for(int value:arr) {
+			System.out.println(value+" ");
+		}
+		System.out.println();
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc  = new Scanner(System.in);
+		
+		System.out.println("\nEnter the size of array:");
+		int size=sc.nextInt();
+		
+		int[] arr= new int[size];
+		System.out.println("\nEnter the elements:");
+		for(int i=0;i<size;i++) {
+			arr[i]=sc.nextInt();
+		}
+		//int [] arr = {75,10,24,18,13,55,43};
+		System.out.println("\noriginal array");
+		printArray(arr);
+		sort(arr); 
+		
+		System.out.println("\nSorted array");
+		printArray(arr);
+	}
+
+	
+	
+}

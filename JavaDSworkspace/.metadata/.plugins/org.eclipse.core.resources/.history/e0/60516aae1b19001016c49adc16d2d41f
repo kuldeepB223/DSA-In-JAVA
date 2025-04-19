@@ -1,0 +1,97 @@
+package singlyLL;
+
+import java.util.Scanner;
+
+public class SinglyLinkedList {
+	private Node head; // create we create head is object of Node class
+	
+	public SinglyLinkedList() {
+		head = null;		// to assign address of next node 
+	}
+	
+	public void setHead(Node newnode) {  
+		head = newnode;		// It set address of newnode to the section of 1st node
+	}
+	
+	public Node createNewnode() {  
+		Node newnode = new Node(); // step 1 -> Allocate memory for newnode at runtime
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter value of new node : ");
+		newnode.setData(sc.nextInt());  // step 2 -> set value that given from user in newnode.
+		
+		newnode.setNext(null); // step 3 -> set next 'null' in newnode.
+		
+		return newnode; //
+	}
+	
+	
+	// now all methods for where to add previously added Query.
+	
+	public void addAtStart() {
+		Node newnode = createNewnode();  // first create node then add at start.
+		
+		if(head == null){		// inside newnode data is 10 and next is null
+			head = newnode;  // head 'null' value is replaced with address of newnode
+		}else {
+			newnode.setNext(head);  // if head is not null then set null to next of newnode
+			head = newnode; 		// and set head as address of newnode
+		}
+	}
+	
+	public void addAtEnd() {
+		Node newnode = createNewnode();
+		Node temp = null;	// firstly declare it without any thought  // it is for reference of head
+		
+		if(head == null) {
+			head = newnode;
+		}else {
+			temp = head;  // temp store address of head
+			while(temp.getnext()!= null) {		// traversing to find out last node
+				temp = temp.getnext();
+			}
+			temp.setNext(newnode);		//set newnode address in temp  // It is connecting to last node i.e., temp
+		}
+	}
+	
+	public void addAtMid(int value) {
+		Node newnode = createNewnode();
+		Node temp = null;
+		
+		if(head == null) {
+			head = newnode;
+		}else if(head.getnext() == null){
+//			temp = head;
+//			while(temp.getnext() != null) {
+//				temp = temp.getnext();
+//			}
+//			temp.setNext(newnode);
+			
+			if(head.getData() == value) {
+				head.setNext(newnode);
+			}else {System.out.println("Error. Value not found");}
+		}else {
+			temp = head;
+			
+			while (temp != null && temp.getData() != value) {
+				temp = temp.getnext();
+			}
+			
+			if(temp != null) {
+				
+			}
+		}
+	}
+	
+	public void display() {
+		Node temp = head;
+		if(temp == null) {
+			System.out.println("Error : linked list is empty.");
+		}else {
+			while(temp != null) {
+				System.out.println(temp.getData() + " -> ");
+				temp = temp.getnext();
+			}
+		}
+	}
+}

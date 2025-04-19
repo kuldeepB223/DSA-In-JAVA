@@ -1,0 +1,25 @@
+package Infix_Postfix;
+
+public class InfixToPostfix {
+	private String infix, postfix;
+	private char arr[];
+	private char top;
+	
+	public InfixToPostfix() {
+		infix = null;
+		
+	}
+	
+	public char peek() {
+		char ch;
+		
+		
+		return ch;
+	}
+	
+	public void inTOpost(String infix2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,7 @@
+INDEX VERSION 1.134+D:\knowIT-DStructure\JavaDSworkspace\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+3498066710.index
+2228597084.index
+1772165109.index
+2995834453.index
+498160593.index

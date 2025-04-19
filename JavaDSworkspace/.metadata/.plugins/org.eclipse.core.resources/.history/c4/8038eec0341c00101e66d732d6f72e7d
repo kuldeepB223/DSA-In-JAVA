@@ -1,0 +1,45 @@
+package CircularQueue;
+
+import java.util.Scanner;
+
+public class Circular_queue {
+	private int front;
+	private int rear;
+	private int arr[];
+	private int size;
+	Scanner sc= new Scanner(System.in);
+	
+	public Circular_queue() {
+		front=-1;
+		rear=-1;
+		arr = new int[size];
+		
+		System.out.println("Enter size of queue :- ");
+		size = sc.nextInt();
+	}
+	
+	public boolean isfull() {
+		if(front == rear) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	public boolean isEmpty() {
+		if(front == rear) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	public void enque(int value) {
+		if(!isfull()) {
+			rear++;
+			rear = value;
+		}else {
+			
+		}
+	}
+	
+	
+}  // class Circular_queue

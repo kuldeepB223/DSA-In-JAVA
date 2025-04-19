@@ -1,0 +1,20 @@
+package Queue;
+
+import java.util.Scanner;
+
+public class QueueArrayMain {
+	QueueArray qa = new QueueArray();
+	
+	Scanner sc = new Scanner(System.in);
+	
+	int option, value;
+
+	do {
+		System.out.println("1:Start"+"\n2:EnQueue"+"\n3:DeQueue"+"\n4:Display"+"\n0:EXIT");
+		System.out.println("Enter your choice: ");
+		option = sc.nextInt();
+		
+	}while(option != 0);
+	
+	
+}

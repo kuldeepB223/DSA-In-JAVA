@@ -1,0 +1,101 @@
+package DynamicStack;
+
+public class Node {
+	private char data;
+	private Node next;
+	
+	Node(){
+	}
+	
+	Node(char ch){
+		data=ch;
+		next=null;
+	}
+	
+	public int getdata() {
+		return data;
+	}
+	public void setdata(char data) {
+		this.data=data;
+	}
+	
+	public Node getnext() {
+		return next;
+	}
+	public void setnext(Node next) {
+		this.next=next;
+	}
+	
+	public String toString() {
+		return data+" "+next;
+	}
+}
+
+
+************************************************************************************************************************************
+
+
+package DynamicStack;
+
+public class Que2 {
+	private Node top;
+	
+	Que2(){
+		top = null;
+	}
+	
+	public boolean isEmpty() {
+		if(top == null)
+			return true;
+		else
+			return false;
+	}
+	
+	public void push(char ch) {
+		Node newnode = new Node(ch);
+		if(top == null) {
+			top = newnode;
+		}else {
+			newnode.setnext(top);
+			top = newnode;
+		}
+	}
+	public void display() {		
+		Node temp = top;
+		
+		if(temp == null) {
+			System.out.println("Stack is empty");
+		}else {
+			while(temp != null) {
+				System.out.println(top);
+				top = top.getnext();
+			}
+		}
+	}
+}
+
+
+
+***************************************************************************************************************************************
+
+
+package DynamicStack;
+
+import java.util.Scanner;
+
+public class Que2Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		Que2 q = new Que2();
+		
+		System.out.println("Enter string- ");
+		String str=sc.next();
+		for(int i=0; i<str.length(); i++) {
+			char ch = str.charAt(i);
+			q.push(ch);
+		}
+		q.display();
+	}
+}

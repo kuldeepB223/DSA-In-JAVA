@@ -1,0 +1,48 @@
+package sorting;
+
+import java.util.Scanner;
+
+public class SelectionSort {
+	public static void main(String[] args) {
+		Scanner sc =new Scanner(System.in);
+		System.out.println("Enter size of array - ");
+		int size = sc.nextInt();
+		
+		int[] arr= new int[size];
+		System.out.println("Enter elements of an array - ");
+		for(int i=0; i<size; i++) {
+			arr[i] = sc.nextInt();
+		}
+		
+		int small;
+		for(int i=0; i<size-1; i++) {
+			small = i;
+			for(int j=0; j<size-i-1; j++) {
+				if(arr[j]>arr[small]) {
+					small=j;
+				}
+			}
+			if(i != small) {
+				arr[i] = arr[i]+arr[small];
+				arr[small] = arr[i]-arr[small];
+				arr[i]=arr[i]-arr[small];
+			}
+		}
+		
+	// this is bubble sort code :- 	
+//		int temp;
+//		for(int i=0; i<size-1; i++) {
+//			for(int j=0; j<size-1-i; j++) {
+//				if(arr[j]>arr[j+1]) {
+//					temp = arr[j];
+//					arr[j] = arr[j+1];
+//					arr[j+1] = temp;
+//				}
+//			}
+//		}
+		for(int i=0; i<size; i++) {
+			System.out.println(arr[i]);
+		}
+		
+	}
+}// class

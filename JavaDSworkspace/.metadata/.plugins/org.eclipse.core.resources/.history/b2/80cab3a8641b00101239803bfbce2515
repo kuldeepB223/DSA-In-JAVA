@@ -1,0 +1,18 @@
+package Infix_Postfix;
+
+import java.util.Scanner;
+
+public class MainInfixToPostfix {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		String infix, postfix;
+		
+		System.out.println("Enter Infix expression - ");
+		infix = sc.nextLine();
+		
+		
+		
+	}
+
+}

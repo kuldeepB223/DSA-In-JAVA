@@ -1,0 +1,27 @@
+package DynamicStack;
+
+public class Que2 {
+	private Dnode top;
+	
+	Que2(){
+		top = null;
+	}
+	
+	public boolean isEmpty() {
+		if(top == null)
+			return true;
+		else
+			return false;
+	}
+	
+	public void push(char ch) {
+		Dnode newnode = new Dnode();
+		if(isEmpty()) {
+			top = newnode;
+		}else {
+			newnode.setnext(newnode);
+			top = newnode;
+		}
+	}
+	
+}

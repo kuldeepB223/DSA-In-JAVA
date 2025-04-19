@@ -1,0 +1,65 @@
+package DynamicStack;
+
+import java.util.Scanner;
+// dynamic stack is just like singly linkedlist
+public class Dstack {
+	Scanner sc = new Scanner(System.in);
+	private Dnode top;
+	
+	
+	Dstack(){	// constructor
+		top = null;
+	}
+	
+	public Dnode createNode(int value) {  // create new node
+		Dnode newnode = new Dnode();
+		
+		newnode.setdata(value);		// initialize value in node's data
+		newnode.setnext(null);
+		return newnode;
+	}
+	public boolean isEmpty() {		// it checks stack is empty or not
+		if(top == null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public void push(int value) {
+		Dnode newnode = createNode(value);
+		
+		if(isEmpty()) {
+			top = newnode;
+		}else {
+			newnode.setnext(top);
+			top = newnode;
+		}
+	}
+	
+	public int pop() {
+		int value=-1;
+		Dnode temp = top;
+		if(!isEmpty()) {
+			value = top.getdata();
+		top = top.getnext();
+		temp.setnext(null);
+		//System.out.println("popped : "+value);
+		}
+		return value;
+	}
+	
+	public void display() {
+		Dnode temp = top;
+		if(!isEmpty()) {
+			while(temp != null) {
+				//System.out.println(temp.getdata());
+				temp = temp.getnext();
+			}
+			//System.out.println("null");
+			
+		}else {
+			//System.out.println("Stack is empty : ");
+		}
+	}
+}

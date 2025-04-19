@@ -1,0 +1,12 @@
+package singlyLL;
+
+public class empNode {
+	private int data;
+	private int next;
+	
+	public empNode(){
+		data = 0;
+		next = null;
+	}
+	
+}

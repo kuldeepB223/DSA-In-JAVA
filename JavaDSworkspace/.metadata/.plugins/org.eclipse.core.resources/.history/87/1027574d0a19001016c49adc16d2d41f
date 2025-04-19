@@ -1,0 +1,7 @@
+package singlyLL;
+
+public class SinglyLinkedList {
+	private Node head; //
+	
+	
+}

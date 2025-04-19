@@ -1,0 +1,18 @@
+package DoublyLinkedList;
+
+import java.util.Scanner;
+
+public class MainDoublyLL {
+
+	public static void main(String[] args) {
+		int choice = 0;
+		DoublyLL dll = new DoublyLL();
+		Scanner sc = new Scanner(System.in);
+		
+		do {
+			System.out.println();
+			
+		}while(choice != 0)
+	}
+
+}

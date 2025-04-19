@@ -1,0 +1,14 @@
+package DynamicQueue;
+
+public class Dqueue {
+	Node front, rear;
+	
+	Dqueue(){
+		front = null;
+		rear = null;
+	}
+	
+	public void enque(int value) {
+		
+	}
+}

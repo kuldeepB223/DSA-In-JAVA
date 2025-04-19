@@ -1,0 +1,77 @@
+package c2stack_Package;
+
+public class C2StackClass {
+	private int size;
+	private int arr[];
+	private int top1;
+	private int top2;
+	
+	public C2StackClass(){
+		size=0;
+		arr = new int[size];
+		top1=-1;
+		top2=size;
+	}
+	public void initStack(int size) {
+		this.size=size;
+		arr = new int[size];
+		top1=-1;
+		top2 = size;
+	}
+	public boolean isfull() {
+		if(top2 ==  top1+1) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public boolean isempty() {
+		if(top1==-1 && top2==size) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public void push1(int value) {
+		if(!isfull()) {
+			top1++;
+			arr[top1] = value;
+		}else {
+			System.out.println("stack is full\\n Entered value cannot push in stack ");
+		}
+	}
+	public int pop1() {
+		int value = 0;
+		if(!isempty()) {
+			value = arr[top1];
+			top1--;
+		}else {
+			System.out.println("stack is empty");
+		}
+		return value;
+	}
+	
+	public void push2(int value) {
+		if(!isfull()) {
+			top2--;
+			arr[top2] = value;
+		}else {
+			System.out.println("stack is full\n Entered value cannot push in stack ");
+		}
+	}
+	public int pop2() {
+		int value=0;
+		if(!isempty()) {
+			value = arr[top2];
+			top2++;
+		}
+		return value;
+	}
+	
+	public void display() {
+		
+		for(int i=0; i<size; i++) {
+			System.out.println(" "+arr[i]);
+		}
+	}
+}

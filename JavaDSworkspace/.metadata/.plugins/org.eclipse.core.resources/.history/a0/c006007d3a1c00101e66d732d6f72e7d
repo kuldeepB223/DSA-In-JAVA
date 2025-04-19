@@ -1,0 +1,70 @@
+package CircularQueue;
+
+import java.util.Scanner;
+
+public class Circular_queue {
+	private int front;
+	private int rear;
+	private int arr[];
+	private int size;
+	Scanner sc= new Scanner(System.in);
+	
+	public Circular_queue() {
+		front=-1;
+		rear=-1;
+		arr = new int[size];
+		
+		System.out.println("Enter size of queue :- ");
+		size = sc.nextInt();
+	}
+	
+	public boolean isfull() {
+		if(front == -1 && rear == size-1) {
+			return true;
+		}else if(front == (rear+1)%size){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	public boolean isEmpty() {
+		if(front == rear) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+	public void enque(int value) {
+		if(!isfull()) {
+			front = rear =0;
+			rear = (rear+1)%size;
+			arr[rear] = value;
+		}else {
+			System.out.println("queue overflow.....");
+		}
+	}
+	public int deque() {
+		int num;
+		
+		if(!isEmpty()) {
+			front = (front+1)%size;
+			num = arr[front];
+		}else {
+			System.out.println("queue is empty. ");
+			num = -1;
+		}
+		return num;
+	}
+	public void display() {
+		int i;
+		if(isEmpty()) {
+			System.out.println("queue is empty...");
+		}else {
+			for(i=1; i!=rear; i=(i+1)%size){
+				System.out.println(arr[i]);
+			}
+			System.out.println(arr[i]);
+		}
+	}
+	
+}  // class Circular_queue

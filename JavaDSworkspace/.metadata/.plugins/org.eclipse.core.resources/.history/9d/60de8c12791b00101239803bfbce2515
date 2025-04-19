@@ -1,0 +1,94 @@
+package DoublyLinkedList;
+
+import java.util.Scanner;
+
+public class DoublyLL {
+	Node head;
+	
+	public void sethead(Node head) {	// setHead() method
+		this.head=head;
+	}
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public Node createNode() {			// createNode() method
+		Node newnode = new Node();
+		
+		System.out.println("Enter data - ");
+		newnode.setdata(sc.nextInt());
+		newnode.setnext(null);
+		newnode.setprev(null);
+		
+		return newnode;
+	}
+	
+	public void addAtStart() {		// addAtstart() method
+		Node newnode = createNode();
+		
+		if(head == null) {
+			head = newnode;
+		}else {
+			newnode.setnext(head);
+			head.setprev(newnode);
+			head = newnode;
+		}
+	}//add at Start
+	
+	public void addAtEnd() {		// addAtEnd() method
+		Node newnode = createNode();
+		Node temp = head;
+		if(head == null) {
+			head = newnode;
+		}else {
+			while(temp.getnext() != null) {
+				temp = temp.getnext();
+			}
+			temp.setnext(newnode);
+			newnode.setprev(temp);
+		}
+	}
+	public void addAtMid(int data) {
+		Node newnode = new Node();
+		Node temp = head;
+		
+		if(head == null) {
+			head = newnode;
+		}else if(head.getnext() == null){
+			if(head.getdata() == data) {
+				head.setnext(newnode);
+				newnode.setprev(head);
+			}else {
+				System.out.println("Node not found. ");
+			}
+		}else {
+			while(temp != null && temp.getdata()!= data) {  //do until temp is not null and data at temp is not equal to value
+				temp = temp.getnext();
+			}	
+				if(temp != null) { //temp is not null means temp contains address of value that we want.
+					newnode.setnext(temp.getnext());
+					temp.getnext().setprev(newnode);
+					temp.setnext(newnode);
+					temp.setprev(temp);
+				}else {
+					System.out.println("Error ");
+				}
+		}
+	}
+	
+	
+	public void display() {
+		
+		Node temp = head;
+		if(temp == null) {
+			System.out.println("LL is empty. ");
+		}else {
+			//System.out.print("null ");
+			while(temp != null) {
+				System.out.print( temp.getdata()+" -> ");
+				temp = temp.getnext();
+			}
+			System.out.println("null");
+		}
+		
+	}
+}

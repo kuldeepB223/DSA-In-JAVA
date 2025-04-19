@@ -1,0 +1,69 @@
+package DoublyLinkedList;
+
+import java.util.Scanner;
+
+public class MainDoublyLL {
+
+	public static void main(String[] args) {
+		int choice = 0;
+		DoublyLL dll = new DoublyLL();
+		Scanner sc = new Scanner(System.in);
+		
+		int option = 0;
+		do {
+			System.out.println("--------------------------Menu---------------------------");
+			System.out.println("1. Add at start \n 2. Add at End \n 3. Add at Mid \n 4.delete at start \n 5. delete at end \n 6. delete at mid \n 7.count 8. add by position \n 11.display \n 0. exit");
+			
+			System.out.println("Enter your choice : ");
+			option = sc.nextInt();
+			
+			switch(option) {
+				case 1: 
+					dll.addAtStart();
+					break;
+					
+				case 2:
+					dll.addAtEnd();
+					break;
+					
+				case 3:
+					System.out.println("Enter neibour data to input - ");
+					int value = sc.nextInt();
+					
+					dll.addAtMid(value);
+					break;
+					
+				case 4:
+					dll.deleteAtStart();
+					break;
+					
+				case 5:
+					dll.deleteAtEnd();
+					break;
+					
+				case 6:
+					System.out.println("Enter data to delete - ");
+					int data = sc.nextInt();
+					dll.deleteAtmid(data);
+					break;
+					
+				case 7:
+					dll.count();
+					break;
+					
+				case 8:
+					System.out.println("Enter position - ");
+					int position = sc.nextInt();
+					dll.addbyposition(position);
+					
+				case 11:
+					dll.display();
+					break;
+				case 0: 
+					System.exit(0);
+			}
+	 
+		}while(option != 0);
+	}
+
+}

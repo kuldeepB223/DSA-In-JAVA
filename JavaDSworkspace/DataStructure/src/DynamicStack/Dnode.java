@@ -1,0 +1,29 @@
+package DynamicStack;
+
+public class Dnode {
+	private int data;
+	private Dnode next;
+	
+	Dnode(){
+		data=0;
+		next=null;
+	}
+	
+	public int getdata() {
+		return data;
+	}
+	public void setdata(int data) {
+		this.data=data;
+	}
+	
+	public Dnode getnext() {
+		return next;
+	}
+	public void setnext(Dnode next) {
+		this.next=next;
+	}
+	
+	public String toString() {
+		return data+" "+next;
+	}
+}

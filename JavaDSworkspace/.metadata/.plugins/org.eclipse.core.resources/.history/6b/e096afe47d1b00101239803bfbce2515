@@ -1,0 +1,153 @@
+package DoublyLinkedList;
+
+import java.util.Scanner;
+
+public class DoublyLL {
+	private Node head;
+	
+	public void sethead(Node head) {	// setHead() method
+		this.head=head;
+	}
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public Node createNode() {			// createNode() method
+		Node newnode = new Node();
+		
+		System.out.println("Enter data - ");
+		newnode.setdata(sc.nextInt());
+		newnode.setnext(null);
+		newnode.setprev(null);
+		
+		return newnode;
+	}
+	
+	public void addAtStart() {		// addAtstart() method
+		Node newnode = createNode();
+		
+		if(head == null) {
+			head = newnode;
+		}else {
+			newnode.setnext(head);
+			head.setprev(newnode);
+			head = newnode;
+		}
+	}//add at Start
+	
+	public void addAtEnd() {		// addAtEnd() method
+		Node newnode = createNode();
+		Node temp = head;
+		if(head == null) {
+			head = newnode;
+		}else {
+			while(temp.getnext() != null) {
+				temp = temp.getnext();
+			}
+			temp.setnext(newnode);
+			newnode.setprev(temp);
+		}
+	}
+	public void addAtMid(int data) {
+		Node newnode = createNode();
+		Node temp = head;
+		
+		if(head == null) {
+			head = newnode;
+		}else if(head.getnext() == null){
+			if(head.getdata() == data) {
+				head.setnext(newnode);
+				newnode.setprev(head);
+			}else {
+				System.out.println("Node not found. ");
+			}
+		}else {
+			while(temp != null && temp.getdata()!= data) {  //do until temp is not null and data at temp is not equal to value
+				temp = temp.getnext();
+			}	
+				if(temp != null) { //temp is not null means temp contains address of value that we want.
+					//newnode.setdata(data);
+					newnode.setnext(temp.getnext());
+					temp.getnext().setprev(newnode);
+					temp.setnext(newnode);
+					temp.setprev(temp);
+				}else {
+					System.out.println("Error ");
+				}
+		}
+	}
+	
+	public void deleteAtStart() {
+		if(head == null) {
+			System.out.println("Linkedlist is empty");
+		}else {
+			head = head.getnext(); // first head switch to 1 node forward 
+			if(head != null) {		// then disconnect head from previous node.
+				head.setprev(null);
+			}
+		}
+	}
+	
+	public void deleteAtEnd() {
+		if(head == null) {
+			System.out.println("Linkedlist is empty");
+		}else if(head.getnext() == null) {
+			head = null;
+		}else {
+			Node temp = head;
+			while(temp.getnext().getnext() != null) {
+				temp = temp.getnext();
+			}
+			temp.getnext().setprev(null);
+		}
+	}
+	
+	public void deleteAtmid(int value) {
+		Node temp=head;
+		
+		if(head==null) {
+			System.out.println("\nLinked List is Empty...!!!");
+		}//if
+		else if(head.getnext()==null) {
+			if(head.getdata()==value) {
+				head=null;
+			}
+			else {
+				System.out.println("\nNode Not Found");
+			}
+		}//else if
+		else {
+			while(temp!=null && temp.getdata()!=value) {
+				temp=temp.getnext();
+				if(temp!=null) {
+					temp.getnext().setprev(temp.getprev());
+					
+					temp.getprev().setnext(temp.getnext());
+					
+					temp.setnext(null);
+					temp.setprev(null);
+				}//if
+				else {
+					System.out.println("\nNode not Found");
+				}
+			}//while
+		}//else
+
+	}
+	
+	
+	public void display() {
+		
+		Node temp = head;
+		if(temp == null) {
+			System.out.println("LL is empty. ");
+		}else {
+			//System.out.print("null ");
+			while(temp != null) {
+				System.out.print( temp.getdata()+" -> ");
+				temp = temp.getnext();
+			}
+			System.out.println("null");
+		}
+		
+	}
+}

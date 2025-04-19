@@ -1,0 +1,20 @@
+package DynamicStack;
+
+import java.util.Scanner;
+
+public class DstackMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Dstack ds = new Dstack();
+		Scanner sc = new Scanner(System.in);
+		
+		int option;
+		
+		System.out.println("Enter your choice\n\n1. push\n 2. pop\n 0. exit");
+		option = sc.nextInt();
+		
+		
+	}
+
+}

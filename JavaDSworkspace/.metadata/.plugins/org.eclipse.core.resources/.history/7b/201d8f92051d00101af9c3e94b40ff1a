@@ -1,0 +1,9 @@
+package c2stack_Package;
+
+public class C2StackMainClass {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

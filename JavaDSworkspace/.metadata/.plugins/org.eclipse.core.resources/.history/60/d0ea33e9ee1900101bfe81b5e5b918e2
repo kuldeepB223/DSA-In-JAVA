@@ -1,0 +1,42 @@
+package SinglyLinkedList;
+
+import java.util.Scanner;
+
+import singlyLL.Node;
+
+public class SinglyLinkedList {
+	private Node head;
+	
+	public SinglyLinkedList() {
+		head = null;
+	}
+	
+	public Node createNewnode() {
+		Node newnode = new Node();			// create a node 
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter data - ");
+		newnode.setData(sc.nextInt());			// set data in our node
+		newnode.setNext(null);					// set null in our node's next
+		
+		return newnode;
+	}
+	
+	public void addAtstart() {
+		
+	}
+	
+	public void display() {
+		Node temp = head;
+		if(temp == null) {
+			System.out.println("Error : linked list is empty.");
+		}else {
+			System.out.println("Count: "+count);
+			while(temp != null) {
+				System.out.print(temp.getData() + " -> ");
+				temp = temp.getnext();
+			}
+			System.out.println("null");
+		}
+	}
+}

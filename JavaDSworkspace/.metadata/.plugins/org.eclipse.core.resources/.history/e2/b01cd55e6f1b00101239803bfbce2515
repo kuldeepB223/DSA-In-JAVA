@@ -1,0 +1,48 @@
+package DoublyLinkedList;
+
+import java.util.Scanner;
+
+public class DoublyLL {
+	Node head;
+	
+	public void sethead(Node head) {
+		this.head=head;
+	}
+	
+	Scanner sc = new Scanner(System.in);
+	public Node createNode() {
+		Node newnode = new Node();
+		
+		System.out.println("Enter data - ");
+		newnode.setdata(sc.nextInt());
+		newnode.setnext(null);
+		newnode.setprev(null);
+		
+		return newnode;
+	}
+	
+	public void addAtStart() {
+		Node newnode = new Node();
+		newnode = createNode();
+		
+		if(head == null) {
+			head = newnode;
+		}else {
+			newnode.setnext(head);
+			newnode.setprev(newnode);
+			head = newnode;
+		}
+	}//add at Start
+	
+	public void addAtEnd() {
+		Node newnode = new Node();
+		Node temp = head;
+		if(head == null) {
+			head = newnode;
+		}else {
+			while(temp.getnext() != null) {
+				
+			}
+		}
+	}
+}

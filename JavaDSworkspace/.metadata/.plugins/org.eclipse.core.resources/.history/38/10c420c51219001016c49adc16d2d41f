@@ -1,0 +1,10 @@
+package singlyLL;
+
+public class SinglyLLMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

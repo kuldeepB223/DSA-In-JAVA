@@ -1,0 +1,44 @@
+package Queue;
+
+import java.util.Scanner;
+
+public class QueueArrayMain {
+	QueueArray qa = new QueueArray();
+	
+	Scanner sc = new Scanner(System.in);
+	
+	int option;
+	int value;
+
+	do {
+		System.out.println("1:Start"+"\n2:EnQueue"+"\n3:DeQueue"+"\n4:Display"+"\n0:EXIT");
+		System.out.println("Enter your choice: ");
+		option = sc.nextInt();
+		
+		switch(option) {
+		case 1:
+			qa.initQueue();
+			System.out.println("queue is initialised");
+			break;
+		case 2:
+			System.out.println("Enter value to insert");
+			value = sc.nextInt();
+			qa.enQue(value);
+			break;
+		case 3:
+			value = qa.deQue();
+			
+			break;
+		case 4:
+			qa.display();
+			break;
+		case 5:
+			System.exit(0);
+			break;
+		}
+		
+	}while(option != 0);
+	
+	
+}
+}

@@ -1,0 +1,127 @@
+package Stack;
+
+import java.util.Scanner;
+
+public class StackArray {
+	
+	int size;
+	int []arr;
+	int top;
+	
+	Scanner sc = new Scanner(System.in);
+	
+	StackArray(){
+		size=0;
+		arr=new int[size];
+		top=-1;
+	}
+	
+	public void  initStack() {
+		System.out.println("Enter size of stack on array");
+		size = sc.nextInt();
+		arr = new int[this.size];
+		this.top = -1;
+	}
+	
+	public boolean isFull() {
+		if(top == size-1)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean isEmpty() {
+		if(top == -1)
+			return true;
+		else
+			return false;
+	}
+	
+	public void push(int value) {
+		if(!isFull()) {
+			top++;
+			arr[top] = value;
+			
+		}else {
+			System.out.println("Stack is full");    // overflow
+		}
+	}
+	public int pop() {
+		int value =-1;
+		if(!isEmpty()) {
+			value = arr[top];
+			top--;
+		}else {
+			System.out.println("stack is empty"); 		// underflow	
+		}
+		return value;
+	}
+	public void display() {
+		if(!isEmpty()) {
+			for(int i=top; i>-1; i--) {
+				System.out.println(arr[i]);
+			}
+		}else {
+			System.out.println("stack is empty");
+		}
+	}
+	
+}
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+package Stack;
+
+import java.util.Scanner;
+
+public class StackArrayMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StackArray s1 = new StackArray();
+		Scanner sc = new Scanner(System.in);
+		
+		int value, option;
+		
+		do{
+			System.out.println("--------------------------Menu------------------------------");
+			System.out.println("\n1:Start"+"\n2:Push"+"\n3:Pop"+"\n4:Display"+"\n0:Exit");
+			
+			System.out.println("Enter  choice");
+			option = sc.nextInt();
+			
+			switch(option) {
+			
+			case 1:
+				s1.initStack();
+				System.out.println("new stack init");
+				break;
+				
+			case 2:
+				System.out.println("Enter number to push");
+				value = sc.nextInt();
+				s1.push(value);
+				break;
+				
+			case 3:
+				value = s1.pop();
+				if(value != -1)
+					System.out.println("deleted a number "+value);
+				break;
+				
+			case 4:
+				s1.display();
+				break;
+				
+			case 5:
+				System.exit(option);
+			}
+			
+		}while(option != 0);
+		
+	}
+
+}

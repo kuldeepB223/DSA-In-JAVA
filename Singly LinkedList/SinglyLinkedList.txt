@@ -1,0 +1,185 @@
+package singlyLL;
+
+public class Node {
+	private int data;	
+	private Node next;		
+	public Node() {		
+		data = 0;
+		next = null;
+	}
+	
+	public int getData() {		
+		return data;
+	}
+	
+	public void setData(int value) {	
+		data = value;
+	}
+	
+	public Node getnext() {  
+		return next;		 	}
+	
+	public void setNext(Node newnode) {
+		next = newnode;
+	}
+}
+
+
+**********************************************************************************************************************************
+
+
+package singlyLL;
+
+import java.util.Scanner;
+
+public class SinglyLinkedList {
+	private Node head; 
+	static int count=0;
+	
+	public SinglyLinkedList() {
+		head = null;		
+	}
+	
+	public void setHead(Node newnode) {  
+		head = newnode;		
+	}
+	
+	public Node createNewnode() {  
+		Node newnode = new Node(); 
+		count++;
+		Scanner sc = new Scanner(System.in);
+
+		System.out.println("Enter value of new node : ");
+		newnode.setData(sc.nextInt());  		
+		newnode.setNext(null); 		
+		return newnode; 
+	}
+	
+		
+	public void addAtStart() {
+		Node newnode = createNewnode();  
+		
+		if(head == null){		
+			head = newnode;  
+		}else {
+			newnode.setNext(head);  
+			head = newnode; 		
+		}
+	}
+	
+	public void addAtEnd() {
+		Node newnode = createNewnode();
+		Node temp = null;	
+		
+		if(head == null) {
+			head = newnode;
+		}else {
+			temp = head;  
+			while(temp.getnext()!= null) {		
+				temp = temp.getnext();
+			}
+			temp.setNext(newnode);		
+		}
+	}
+	
+	public void addAtMid(int value) {
+		Node newnode = createNewnode();
+		Node temp = null;
+		
+		if(head == null) {
+			head = newnode;
+		}else if(head.getnext() == null){
+			
+			if(head.getData() == value) {
+				head.setNext(newnode);
+			}else {
+				System.out.println("Error. Value not found");
+			}
+		}else {
+			temp = head;
+			
+			while (temp != null && temp.getData() != value) {
+				temp = temp.getnext();
+			}
+			
+			if(temp != null) {
+				newnode.setNext(temp.getnext());
+				temp.setNext(newnode);
+			}else {
+				System.out.println("Error  Node not exist");
+			}
+		}
+	}
+	
+	public void display() {
+		Node temp = head;
+		if(temp == null) {
+			System.out.println("Error : linked list is empty.");
+		}else {
+			System.out.println("Count: "+count);
+			while(temp != null) {
+				System.out.print(temp.getData() + " -> ");
+				temp = temp.getnext();
+			}
+			System.out.println("null");
+		}
+	}
+}
+
+
+*******************************************************************************************************************************
+
+
+package singlyLL;
+
+import java.util.Scanner;
+
+public class SinglyLLMain {
+
+	public static void main(String[] args) {
+		SinglyLinkedList s1 = new SinglyLinkedList();
+		Scanner sc = new Scanner(System.in);
+		
+			
+		int option = 0;
+		do {
+			System.out.println("--------------------------Menu---------------------------");
+			System.out.println("1. start (create new node) \n 2. Add at start \n 3. Add at End \n 4. Add at Mid \n 5.display \n 0. exit");
+			System.out.println("Enter your choice : ");
+			option = sc.nextInt();
+			
+			switch(option) {
+			
+			case 1: 
+				Node newnode = s1.createNewnode(); 
+				s1.setHead(newnode);
+				System.out.println("Newnode is created");
+				break;
+			case 2:
+				s1.addAtStart();
+				break;
+				
+			case 3:
+				s1.addAtEnd();
+				break;
+				
+			case 4:
+				System.out.println("Enter value to add at mid : ");
+				int value = sc.nextInt();
+				s1.addAtMid(value);
+				break;
+				
+			case 5:
+				s1.display();
+				break;
+				
+			case 0: 
+				System.exit(0);
+			}
+	 
+		}while(option != 0);
+	}
+
+}
+
+

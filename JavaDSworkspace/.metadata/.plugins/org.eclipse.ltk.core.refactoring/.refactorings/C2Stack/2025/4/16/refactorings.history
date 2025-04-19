@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;C2stack&apos; to &apos;c2stack_Package&apos;&#x0D;&#x0A;- Original project: &apos;C2Stack&apos;&#x0D;&#x0A;- Original element: &apos;C2Stack/src/C2stack&apos;&#x0D;&#x0A;- Renamed element: &apos;C2Stack/src/c2stack_Package&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;C2stack&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;C2stack" name="c2stack_Package" qualified="false" references="true" stamp="1745054470923" textual="false" version="1.0"/>
+</session>

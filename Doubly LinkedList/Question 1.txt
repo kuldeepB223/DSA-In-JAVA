@@ -1,0 +1,312 @@
+
+
+package DoublyLL;
+
+public class Node {
+	private Node next;
+	private int data;
+	private Node prev;
+	public Node() {
+		next=null;
+		data=0;
+	}
+
+	public Node getNext() {
+		return next;
+	}
+
+	public void setNext(Node next) {
+		this.next = next;
+	}
+
+	public int getData() {
+		return data;
+	}
+
+	public void setData(int data) {
+		this.data = data;
+	}
+
+	public Node getPrev() {
+		return prev;
+	}
+
+	public void setPrev(Node prev) {
+		this.prev = prev;
+	}
+	
+
+}
+
+
+*******************************************************************************************************************************
+
+
+package DoublyLL;
+
+import java.util.Scanner;
+
+public class DoublyLinkedList {
+	private Node head;
+	
+	Scanner sc= new Scanner(System.in);
+	
+	public void DoublyLinkedList() {
+		head=null;
+	}
+	public Node createnode() {
+		Node newnode = new Node();
+		newnode.setNext(null);
+		newnode.setPrev(null);
+		System.out.println("\nEnter your data:");
+		newnode.setData(sc.nextInt());
+		
+		return newnode;
+	}//createnode
+	
+	public void addatstart() {
+		Node newnode = createnode();
+		
+		if(head==null) {
+			head=newnode;
+		}
+		else {
+			newnode.setNext(head);
+			head.setPrev(newnode);
+			head=newnode;
+		}
+	}//add at start
+	
+	public void addatend() {
+		Node newnode = createnode();
+		Node temp=head;
+		if(head==null) {
+			head=newnode;
+		}
+		else {
+			while(temp.getNext()!=null) {
+				temp=temp.getNext();
+			}//while
+				temp.setNext(newnode);
+				newnode.setPrev(temp);
+			
+		}//else
+	}//add at end
+	
+	public void addatmid(int value) {
+		Node newnode =createnode();
+		Node temp=head;
+		if(head==null) {
+			head=newnode;
+		}
+		else if(head.getNext()==null) {
+			if(head.getData()==value) {
+				head.setNext(newnode);
+				newnode.setPrev(head);
+			}
+			else {
+				System.out.println("\nLinked List is Empty");
+			}//else
+		}//else if
+		else {
+			while(temp!=null && temp.getData()!=value) {
+				temp=temp.getNext();
+				if(temp!=null) {
+					newnode.setNext(temp.getNext());
+					temp.getNext().setPrev(newnode);
+					temp.setNext(newnode);
+					newnode.setPrev(temp);
+				}
+				else {
+					System.out.println("\nNode Not Found......!!!");
+				}
+			}//while
+		}//else
+	}//add at mid
+	
+	public void deleteatstart() {
+		if(head==null) {
+			System.out.println("\nLinked list is empty");
+		}//if
+		else {
+			head=head.getNext();
+			if(head!=null) {
+				head.setPrev(null);
+			}//if
+		}//else
+	}//delete at start
+	
+	public void deleteatEnd() {
+		if(head==null) {
+			System.out.println("\nLinked List is Empty");
+		}//if
+		else if(head.getNext()==null) {
+			head=null;
+		}//else if
+		else {
+			Node temp=head;
+			while(temp.getNext().getNext()!=null) {
+				temp=temp.getNext();
+				temp.getNext().getPrev();
+			}//while
+		}//else
+	}//delete at end
+	
+	public void deleteatmid(int value) {
+		Node temp=head;
+		
+		if(head==null) {
+			System.out.println("\nLinked List is Empty...!!!");
+		}//if
+		else if(head.getNext()==null) {
+			if(head.getData()==value) {
+				head=null;
+			}
+			else {
+				System.out.println("\nNode Not Found");
+			}
+		}
+		else {
+			while(temp!=null && temp.getData()!=value) {
+				temp=temp.getNext();
+				if(temp!=null) {
+					temp.getNext().setPrev(temp.getPrev());
+					
+					temp.getPrev().setNext(temp.getNext());
+					
+					temp.setNext(null);
+					temp.setPrev(null);
+				}
+				else {
+					System.out.println("\nNode not Found");
+				}
+			}
+		}
+	}
+	
+	public int count() {
+		int count=0;
+		Node temp=head;
+		while(temp!=null) {
+			count++;
+			temp=temp.getNext();
+		}
+		return count;
+	}//count
+	
+	
+	public void addbyposition(int position) {
+		Node newnoNode = createnode();
+		Node temp=head;
+		int index=0;
+		//add at start
+		if(position==0) {
+			addatstart();
+		}
+		
+		while(temp!=null&& index<position-1) {
+			temp=temp.getNext();
+			index++;
+		}
+		
+		if(temp==null){
+			System.out.println("\nposition not found");
+		}
+		
+		//add at middle
+		newnoNode.setNext(temp.getNext());
+		newnoNode.setPrev(temp);
+		
+		
+		if(temp.getNext()!=null) {
+			temp.getNext().setPrev(newnoNode);
+		}
+		
+		temp.setNext(newnoNode);
+		
+	}
+	
+	public void display() {
+		Node temp=head;
+		if(head==null) {
+			System.out.println("\nLinked List is empty");
+		}else {
+			while(temp!=null) {
+				System.out.print(temp.getData()+"->");
+				temp=temp.getNext();
+			}//while
+			System.out.print("null");
+		}//else
+	}//display
+}//class
+
+
+
+******************************************************************************************************************************************
+
+package DoublyLL;
+
+import java.util.Scanner;
+
+public class ClientDoublyLinkedList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		DoublyLinkedList dll = new DoublyLinkedList();
+		Scanner sc = new Scanner(System.in);
+		int option =0;
+		do {
+			System.out.println("\n---------Menu-----------\n");
+			
+			System.out.println("\n1:At Start"+
+							    "\n2:At End"+
+							   "\n3:At Mid"+
+							    "\n4: delete at start"+
+							   "\n5: delete at end"+
+							    "\n6:delete at mid"+
+							   "\n7:count"+
+							    "\n8:add by position"+
+							   "\n11:display"+
+							    "\n0:Exit");
+			System.out.println("\nEnter your Option:");
+			option = sc.nextInt();
+			switch(option) {
+			case 1:
+				dll.addatstart();
+				break;
+			case 2:
+				dll.addatend();
+				break;
+			case 3:
+				int value;
+				System.out.println("\nEnter node after which to add");
+				value=sc.nextInt();
+				dll.addatmid(value);
+				break;
+			case 4:
+				dll.deleteatstart();
+			case 5:
+				dll.deleteatEnd();
+			case 6:
+				int value1;
+				System.out.println("\nEnter node after which to delete");
+				value1=sc.nextInt();
+				dll.deleteatmid(value1);
+			case 7:
+				System.out.println("\nNumber of Nodes in Linked List:"+" "+dll.count());
+			case 8:
+				System.out.println("\nEnter the position to add the Node");
+				int position=sc.nextInt();
+				dll.addbyposition(position);
+			case 11:
+				System.out.println("\n*********************");
+				dll.display();
+				System.out.println("\n*********************");
+				break;
+			case 0:
+				System.exit(0);
+			}
+		}while(option!=0);
+	}
+
+}

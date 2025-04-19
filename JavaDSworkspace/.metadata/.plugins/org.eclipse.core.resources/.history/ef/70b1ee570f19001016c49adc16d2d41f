@@ -1,0 +1,13 @@
+package singlyLL;
+
+public class SinglyLinkedList {
+	private Node head; // create we create head is object of Node class
+	
+	public SinglyLinkedList() {
+		head = null;		// to assign 
+	}
+	
+	public void setHead(Node newnode) {
+		
+	}
+}

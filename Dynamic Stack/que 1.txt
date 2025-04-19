@@ -1,0 +1,143 @@
+package DynamicStack;
+
+public class Dnode {
+	private int data;
+	private Dnode next;
+	
+	Dnode(){
+		data=0;
+		next=null;
+	}
+	
+	public int getdata() {
+		return data;
+	}
+	public void setdata(int data) {
+		this.data=data;
+	}
+	
+	public Dnode getnext() {
+		return next;
+	}
+	public void setnext(Dnode next) {
+		this.next=next;
+	}
+	
+	public String toString() {
+		return data+" "+next;
+	}
+}
+
+
+**********************************************************************************************************************************
+
+
+package DynamicStack;
+
+import java.util.Scanner;
+// dynamic stack is just like singly linkedlist
+public class Dstack {
+	Scanner sc = new Scanner(System.in);
+	private Dnode top;
+	
+	
+	Dstack(){	// constructor
+		top = null;
+	}
+	
+	public Dnode createNode(int value) {  // create new node
+		Dnode newnode = new Dnode();
+		
+		newnode.setdata(value);		// initialize value in node's data
+		newnode.setnext(null);
+		return newnode;
+	}
+	public boolean isEmpty() {		// it checks stack is empty or not
+		if(top == null) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public void push(int value) {
+		Dnode newnode = createNode(value);
+		
+		if(isEmpty()) {
+			top = newnode;
+		}else {
+			newnode.setnext(top);
+			top = newnode;
+		}
+	}
+	
+	public int pop() {
+		int value=-1;
+		Dnode temp = top;
+		if(!isEmpty()) {
+			value = top.getdata();
+		top = top.getnext();
+		temp.setnext(null);
+		//System.out.println("popped : "+value);
+		}
+		return value;
+	}
+	
+	public void display() {
+		Dnode temp = top;
+		if(!isEmpty()) {
+			while(temp != null) {
+				System.out.println(temp.getdata());
+				temp = temp.getnext();
+			}
+			//System.out.println("null");
+			
+		}else {
+			System.out.println("Stack is empty : ");
+		}
+	}
+}
+
+
+****************************************************************************************************************************************
+
+
+package DynamicStack;
+
+import java.util.Scanner;
+
+public class DstackMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Dstack ds = new Dstack();
+		Scanner sc = new Scanner(System.in);
+		
+		int option;
+		do {
+		System.out.println("Enter your choice\n\n1. push\n 2. pop\n 3. display\n 0. exit");
+		option = sc.nextInt();
+		
+		switch(option) {
+		
+		case 1: 
+			System.out.println("Enter value to push - ");
+			int value = sc.nextInt();
+			ds.push(value);
+			break;
+		case 2:
+			value = ds.pop();
+			if(value!=-1)
+				System.out.println("\nPopped:: "+ value);
+			break;
+		case 3:
+			ds.display();
+			break;
+		case 0:
+			System.exit(0);
+			break;
+		}
+		}while(option != 0);
+	}
+
+}

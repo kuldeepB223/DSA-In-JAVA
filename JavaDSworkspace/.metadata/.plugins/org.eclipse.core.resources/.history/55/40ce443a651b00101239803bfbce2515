@@ -1,0 +1,13 @@
+package Infix_Postfix;
+
+public class InfixToPostfix {
+	
+	public char peek() {
+		char ch='a';
+		return ch;
+	}
+	public void inTopost(String infix) {
+		
+	}
+
+}

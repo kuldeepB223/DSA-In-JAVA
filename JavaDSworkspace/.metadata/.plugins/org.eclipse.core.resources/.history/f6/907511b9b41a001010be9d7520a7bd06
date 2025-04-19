@@ -1,0 +1,32 @@
+package DynamicStack;
+
+public class Node {
+	private char data;
+	private Node next;
+	
+	Node(){
+	}
+	
+	Node(int ch){
+		data=ch;
+		next=null;
+	}
+	
+	public int getdata() {
+		return data;
+	}
+	public void setdata(char data) {
+		this.data=data;
+	}
+	
+	public Node getnext() {
+		return next;
+	}
+	public void setnext(Node next) {
+		this.next=next;
+	}
+	
+	public String toString() {
+		return data+" "+next;
+	}
+}
