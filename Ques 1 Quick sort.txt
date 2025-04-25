@@ -1,0 +1,68 @@
+package QuickSort;
+
+import java.util.Scanner;
+
+public class QuickSorting {
+	
+	public static int split(int arr[], int low, int high) {
+		
+		int pivot = arr[low];
+		int temp;
+		int i=low;
+		int j=high;
+		
+		do {
+			while(arr[i]< pivot && i<high) {  
+				i++;
+			}
+			while( pivot < arr[j]) {
+				j--;
+			}
+			
+			
+			if(i<j) {			// swapping 
+				temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+			
+		}while(i<j);
+		return j;
+	}
+	
+	public static void Quicksort(int arr[], int low, int high) {		// sorting by recursive call
+		if(low < high){
+			int pivot = split(arr, low, high);
+			
+			Quicksort(arr, low, pivot-1);
+			Quicksort(arr, pivot+1, high);
+		}		
+	}
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter size of array - ");		//size of array
+		int size = sc.nextInt();
+		
+		System.out.println("Enter elements of array - ");
+		int arr[] = new int[size];							//take input arr elements 
+		for(int i=0; i<size; i++) {
+			arr[i] = sc.nextInt();
+		}
+		
+		System.out.println("Original array ");
+		for(int i=0; i<size; i++) {
+			System.out.println("\t"+arr[i]);
+		}
+		System.out.println("----------------------------------------------------------------------------------");
+		
+		Quicksort(arr, 0, size-1 );			//call to quick sort method for sort array.
+		
+		System.out.println("Sorted array ");
+		for(int i=0; i<size; i++) {					
+			System.out.println("\t"+arr[i]);
+		}
+		System.out.println("----------------------------------------------------------------------------------");
+		
+	}
+}
