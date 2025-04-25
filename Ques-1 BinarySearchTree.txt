@@ -1,0 +1,172 @@
+package treeDataStructure;
+
+public class Node {
+	private Node left;
+	private Node right;
+	private int data;
+	
+	Node(){
+		left = null;
+		right = null;
+		this.data=0;
+	}
+	
+	public Node getleft() {
+		return left;
+	}
+	public Node getright() {
+		return right;
+	}
+	public int getdata() {
+		return data;
+	}
+	
+	public void setleft(Node left) {
+		this.left=left;
+	}
+	public void setright(Node right) {
+		this.right =right;
+	}
+	public void setdata(int data) {
+		this.data=data;
+	}
+}
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+package treeDataStructure;
+
+import java.util.Scanner;
+
+public class BinarySearchTree {
+	private Node root;
+	
+	Scanner sc = new Scanner(System.in);
+	public BinarySearchTree(){
+		root = null;
+	}
+	public Node getroot() {
+		return this.root;
+	}
+	
+	public Node createNode(int data) {
+		Node newnode = new Node();
+		newnode.setleft(null);
+		newnode.setright(null);
+		newnode.setdata(data);
+		return newnode;
+	}
+	
+	public void AddNode(int data) {
+		Node newnode = createNode(data);
+		Node temp = root;
+		
+		if(temp == null) {
+			root = newnode;
+		}else if(temp != null) {
+			while(true) {
+				if(data < temp.getdata()) {			// if data is small than existing data.
+					if(temp.getleft() == null) {			//first of all check left if it is null then add newnode
+						temp.setleft(newnode);
+						break;
+					}else {
+						temp = temp.getleft();
+					}
+				}else if(data > temp.getdata()) {
+					if(temp.getright() == null) {
+						temp.setright(newnode);
+						break;
+					}else {
+						temp = temp.getright();
+					}
+				}else{
+					System.out.println("No duplicate allowed. ");
+					break;
+				}
+			}
+		}
+	}
+	
+	public void preOrder(Node root) {
+		Node temp = root;
+		
+		if(root != null) {
+			System.out.println("  "+temp.getdata());
+			preOrder(temp.getleft());
+			preOrder(temp.getright());
+		}
+	}
+	public void InOrder(Node root) {	// using this we get output in ascending order
+		Node temp = root;
+		
+		if(root != null) {
+			InOrder(temp.getleft());
+			System.out.println("  "+temp.getdata());
+			InOrder(temp.getright());
+		}
+	}
+	public void PostOrder(Node root) {
+		Node temp = root;
+		
+		if(root != null) {
+			PostOrder(temp.getleft());
+			PostOrder(temp.getright());
+			System.out.println("  "+temp.getdata());
+		}
+	}
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+package treeDataStructure;
+
+import java.util.Scanner;
+
+public class MainBST {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BinarySearchTree bst = new BinarySearchTree();
+		Scanner sc = new Scanner(System.in);
+		
+		int value, choice=0;
+		
+		do {
+			System.out.println("Enter choice - ");
+			System.out.println("1.Add node \n 2.Preorder \n 3.Inorder \n 4.PostOrder \n 0.exit");
+			choice = sc.nextInt();
+			
+			switch(choice) {
+			case 1:
+				System.out.println("Enter value to insert in node - ");
+				value = sc.nextInt();
+				bst.AddNode(value);
+				break;
+			case 2:
+				System.out.println("------------------- Preorder -------------------------------");
+				bst.preOrder(bst.getroot());
+				System.out.println("------------------------------------------------------------");
+				break;
+			case 3:
+				System.out.println("------------------ Inorder ---------------------------------");
+				bst.InOrder(bst.getroot());
+				System.out.println("------------------------------------------------------------");
+				break;
+			case 4:
+				System.out.println("------------------ PostOrder -------------------------------");
+				bst.PostOrder(bst.getroot());
+				System.out.println("------------------------------------------------------------");
+				break;
+			case 0:
+				System.exit(choice);
+				break;
+			}
+		}while(choice != 0);
+	}
+
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------

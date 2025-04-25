@@ -1,0 +1,210 @@
+***********class node**************************************
+package BinarySearchTree;
+
+public class Node {
+private Node left;
+private Node right;
+private int data;
+
+public Node() {
+	left=right=null;
+	data=0;
+}
+
+public Node getLeft() {
+	return left;
+}
+
+public void setLeft(Node left) {
+	this.left = left;
+}
+
+public Node getRight() {
+	return right;
+}
+
+public void setRight(Node right) {
+	this.right = right;
+}
+
+public int getData() {
+	return data;
+}
+
+public void setData(int data) {
+	this.data = data;
+}
+
+
+}
+
+
+
+*********************class binary tree*******************
+package BinarySearchTree;
+
+public class Binary_Search_tree {
+private Node root;
+
+public Binary_Search_tree() {
+	root=null;
+}
+
+
+public Node getRoot() {
+	return this.root;
+}
+
+
+public Node createnode(int value) {
+	Node newnode = new Node();
+	newnode.setData(value);
+	newnode.setLeft(null);
+	newnode.setRight(null);
+	return newnode;
+}//create newnode
+
+
+public void addnode(int value) {
+	Node newnode=createnode(value);
+	Node temp=root;
+	if(root==null) {
+		root=newnode;
+	}
+	else if(root!=null) {
+		temp=root;
+		while(true) {
+			if(value<temp.getData()) {
+				if(temp.getLeft()==null) {
+					temp.setLeft(newnode);
+					break;
+				}//if-2
+				else {
+					temp=temp.getLeft();
+				}//else-2
+			}//if-1  value<temp
+			else if(value>temp.getData()) {
+				if(temp.getRight()==null) {
+					temp.setRight(newnode);
+					break;
+				}//if
+				else {
+					temp=temp.getRight();
+				}//else
+			}//else-if value>temp
+			else {
+				System.out.println("\nDuplicate are not allowed");
+				break;
+			}
+		}//while
+	}//else if 
+}//add node
+
+public void preOrder(Node root) {
+	Node temp=root;
+	if(root!=null) {
+		System.out.println(" "+temp.getData());
+		preOrder(temp.getLeft());
+		preOrder(temp.getRight());
+		
+	}
+}//preOrder
+
+public void inOrder(Node root) {
+	Node temp=root;
+	if(root!=null) {
+	inOrder(temp.getLeft());
+	System.out.println(" "+temp.getData());
+	inOrder(temp.getRight());
+	}
+}//inOrder
+
+public void postOrder(Node root) {
+	Node temp=root;
+	if(root!=null) {
+	postOrder(temp.getLeft());
+	postOrder(temp.getRight());
+	System.out.println(" "+temp.getData());
+	}
+}//postOrder
+
+public void displayDegreeofNode() {
+	System.out.println("\nNode with its Degree");
+	degreeofNode(root);
+}
+public void degreeofNode(Node temp) {
+	
+	if(temp!=null) {
+		int degree=0;
+	
+	if(temp.getLeft()!=null) {
+		degree++;
+	}
+	if(temp.getRight()!=null) {
+		degree++;
+	}
+	System.out.println("Node:"+" "+temp.getData()+" "+"Degree of Node :"+" "+degree);
+	degreeofNode(temp.getLeft());
+	degreeofNode(temp.getRight());
+	}
+	
+	
+}//degree of Node 
+}//class
+
+
+**********************class main binary tree*********************************************
+
+package BinarySearchTree;
+
+import java.util.Scanner;
+
+public class Client_Binary_Search_Tree {
+
+	public static void main(String[] args) {
+		Binary_Search_tree bst = new Binary_Search_tree();
+		
+		Scanner sc = new Scanner(System.in);
+		int option=0;
+		int value;
+		do {
+			System.out.println("\n----------Menu----------");
+			
+			
+			System.out.println("\n1:Add"+
+								"\n2:preOrder"+
+								"\n3:inOrder"+
+								"\n4:postOrder"+
+								"\n5:Degree of Node"+
+								"\n0:exit");
+			System.out.println("\nEnter your choice:");
+			option=sc.nextInt();
+			switch(option) {
+			case 1:
+				System.out.println("\nEnter value to add:");
+				value=sc.nextInt();
+				bst.addnode(value);
+				System.out.println("\nNode is added....!!!");
+				break;
+			case 2:
+				System.out.println("\n-------preOrder-------");
+				bst.preOrder(bst.getRoot());
+				break;
+			case 3:
+				System.out.println("\n--------inOrder---------");
+				bst.inOrder(bst.getRoot());
+				break;
+			case 4:
+				System.out.println("\n-----------postOrder--------");
+				bst.postOrder(bst.getRoot());
+				break;
+			case 5:
+				bst.displayDegreeofNode();
+			case 0:
+				System.exit(0);
+			}//switch
+		}while(option!=0);
+
+	}//main
+
+}//class

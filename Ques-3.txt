@@ -1,0 +1,230 @@
+package treeDataStructure;
+
+import java.util.Scanner;
+
+public class BinarySearchTree {
+	private Node root;
+	
+	Scanner sc = new Scanner(System.in);
+	public BinarySearchTree(){
+		root = null;
+	}
+	public Node getroot() {
+		return this.root;
+	}
+	
+	public Node createNode(int data) {
+		Node newnode = new Node();
+		newnode.setleft(null);
+		newnode.setright(null);
+		newnode.setdata(data);
+		return newnode;
+	}
+	
+	public void AddNode(int data) {
+		Node newnode = createNode(data);
+		Node temp = root;
+		
+		if(temp == null) {
+			root = newnode;
+		}else if(temp != null) {
+			while(true) {
+				if(data < temp.getdata()) {			// if data is small than existing data.
+					if(temp.getleft() == null) {	//first of all check left if it is null then add newnode
+						temp.setleft(newnode);
+						break;
+					}else {
+						temp = temp.getleft();
+					}
+				}else if(data > temp.getdata()) {
+					if(temp.getright() == null) {
+						temp.setright(newnode);
+						break;
+					}else {
+						temp = temp.getright();
+					}
+				}else{
+					System.out.println("No duplicate allowed. ");
+					break;
+				}
+			}
+		}
+	}
+	
+	
+//------------------------------------------------------------------------------------------------------------------------------------------------
+
+	//Delete node
+	
+	public void DeleteNode(int num) {
+		Node temp = root;
+		Node tag = root;
+		Node tag2 = temp;
+		int flag;
+		
+// search value in tree 
+		while(true) {
+			if(root == null) {
+				System.out.println("tree is empty...");
+			}else if(root != null){
+				// root is not null then search it in tree
+				if(temp.getdata() == num) {
+					flag = 1;
+					break;
+				}else if(num < temp.getdata()) {
+					tag = temp;
+					temp = temp.getleft();
+				}else if(num > temp.getdata()) {
+					tag = temp;
+					temp = temp.getright();
+				}
+			} //else if
+		}//while 
+		
+// delete from tree
+		
+		if(flag == 1) {
+			
+			
+		//Type 1  // both end are null of temp means this is leaf node
+			if(temp.getleft() == null && temp.getright() == null) {
+				
+				if(temp == tag.getleft()) {								//if temp is left side child node
+					tag.setleft(null);								// set null in left of tag
+				}else if(temp == tag.getright()){						//if temp is right side child node 
+					tag.setright(null);								// set null in right of tag
+				}
+				
+		//Type 2  // only LHS subtree
+			}else if(temp.getleft() != null && temp.getright()==null) {
+				if(tag.getleft() == temp) {								// if tag 
+					tag.setleft(temp.getleft());
+					temp.setleft(null);
+				}else if(tag.getright() == temp) {
+					tag.setright(temp.getleft());
+					temp.setleft(null);
+				}
+				
+		//Type 3  // only RHS subtree
+			}else if(temp.getright() != null && temp.getleft() == null) {
+				if(tag.getright() == temp) {
+					tag.setright(temp.getleft());
+					temp.setright(null);
+				}else if(tag.getleft() == temp) {
+					tag.setleft(temp.getright());
+				}
+		
+		//Type 4  // both LHS and RHS
+			}else if(temp.getright() != null && temp.getleft() != null){
+				tag2 = tag2.getright();
+				
+				while(tag.getleft() != null) {
+					tag2 = tag2.getleft();
+				}
+				
+				if(temp == tag.getleft()) {
+					tag.setright(temp.getright());
+				}else if(temp == tag.getleft()){
+					tag.setleft(temp.getright());
+				}
+				
+				tag2.setleft(temp.getleft());
+			}
+			
+		}else {
+			System.out.println("Node is not found....");
+		}
+	}
+
+//------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	public void preOrder(Node root) {
+		Node temp = root;
+		
+		if(root != null) {
+			System.out.println("  "+temp.getdata());
+			preOrder(temp.getleft());
+			preOrder(temp.getright());
+		}
+	}//preorder
+	
+	
+	public void InOrder(Node root) {
+		Node temp = root;
+		
+		if(root != null) {
+			InOrder(temp.getleft());
+			System.out.println("  "+temp.getdata());
+			InOrder(temp.getright());
+		}
+	}//Inorder
+	
+	
+	public void PostOrder(Node root) {
+		Node temp = root;
+		
+		if(root != null) {
+			PostOrder(temp.getleft());
+			PostOrder(temp.getright());
+			System.out.println("  "+temp.getdata());
+		}
+	}//postorder
+	
+}
+
+-***********************************************************************************************************************************
+
+
+package treeDataStructure;
+
+import java.util.Scanner;
+
+public class MainBST {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		BinarySearchTree bst = new BinarySearchTree();
+		Scanner sc = new Scanner(System.in);
+		
+		int value, choice=0;
+		
+		do {
+			System.out.println("Enter choice - ");
+			System.out.println("1.Add node \n 2.Preorder \n 3.Inorder \n 4.PostOrder \n 5.Delete node \n 0.exit");
+			choice = sc.nextInt();
+			
+			switch(choice) {
+			case 1:
+				System.out.println("Enter value to insert in node - ");
+				value = sc.nextInt();
+				bst.AddNode(value);
+				break;
+			case 2:
+				System.out.println("------------------- Preorder -------------------------------");
+				bst.preOrder(bst.getroot());
+				System.out.println("------------------------------------------------------------");
+				break;
+			case 3:
+				System.out.println("------------------ Inorder ---------------------------------");
+				bst.InOrder(bst.getroot());
+				System.out.println("------------------------------------------------------------");
+				break;
+			case 4:
+				System.out.println("------------------ PostOrder -------------------------------");
+				bst.PostOrder(bst.getroot());
+				System.out.println("------------------------------------------------------------");
+				break;
+			case 5:
+				System.out.print("\nEnter the node which you want to delete: ");
+				value=sc.nextInt();
+				bst.DeleteNode(value);
+				System.out.println("\nNode is Deleted....!!!");
+				break;
+			case 0:
+				System.exit(choice);
+				break;
+			}
+		}while(choice != 0);
+	}
+
+}
