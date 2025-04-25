@@ -1,0 +1,132 @@
+package question2;
+
+import java.util.Scanner;
+
+public class GraphInOutMatrix {
+	Scanner sc = new Scanner(System.in);
+	int arr[][];
+	int size;
+	
+	public GraphInOutMatrix(){
+		System.out.println("Enter size of array - ");
+		size = sc.nextInt();
+		
+		arr = new int[size][size];
+		
+	}
+	
+	public void creategraph() {
+		for (int i=0; i<size; i++) {
+			
+			System.out.println("Enter adjacency of "+(i+1)+" : ");
+			
+			for(int j=0; j<size; j++) {
+				System.out.print((i+1)+" : "+(j+1)+"   -> ");
+				int value = sc.nextInt();
+				System.out.println();
+				if(value==0 || value==1)
+					arr[i][j] = value;
+				else
+					System.out.println("entered value is not acceptable");
+			}
+		}
+	}
+	
+	public void displayMatrix() {
+		
+		for(int i=0; i<size; i++) {
+			for(int j=0; j<size; j++) {
+				System.out.print("\t"+arr[i][j]);
+			}
+			System.out.println();
+		}
+	}
+	
+	public void inDegree() {
+
+		System.out.println("In-Degree: ");
+
+		char ch = 'a';
+
+		for(int i = 0;i < size;i++,ch++) {
+
+			int indegree = 0;
+
+			for(int j = 0; j < size;j++) {
+
+				indegree = indegree+arr[i][j];
+
+			}
+
+			System.out.println(ch+": "+indegree);
+
+		}	
+
+	}
+
+	
+
+	public void OutDegree() {
+
+	    System.out.println("Out-Degree: ");
+
+	    char ch = 'a';
+
+	    for (int i = 0;i < size;i++,ch++) {
+
+	        int outdegree = 0;
+
+	        for (int j = 0; j < size;j++) {
+
+	        	outdegree = outdegree + arr[j][i];
+
+	        }
+
+	        System.out.println(ch + ": " + outdegree);
+
+	    }
+
+	}
+
+
+
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+package question2;
+import java.util.Scanner;
+
+public class MainGraphInOut {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		GraphInOutMatrix gm = new GraphInOutMatrix();
+		
+		int choice=0;
+		do {
+			System.out.println("-----------------------------------------------");
+			System.out.println("\t1.create Graph\n\t2.display matrix\n\t3.Find Indegree\n\t4.Find Outdegree\n\t0.Exit");
+			System.out.println("Enter your choice - ");
+			choice = sc.nextInt();
+			
+			switch(choice) {
+			case 1:
+				gm.creategraph();
+				break;
+			case 2:
+				gm.displayMatrix();
+				break;
+			case 3:
+				gm.inDegree();
+				break;
+			case 4:
+				gm.OutDegree();
+				break;
+			}
+		}while(choice != 0);
+	}
+
+}

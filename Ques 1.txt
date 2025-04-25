@@ -1,0 +1,175 @@
+package graph;
+
+import java.util.Scanner;
+
+public class GraphUndirected {
+	Scanner sc = new Scanner(System.in);
+	
+	int arr[][];
+	int nOfelement;	// no. of elements in an array // size of an array
+	
+	public GraphUndirected() {
+		
+		System.out.println("Enter no. of elements of array - ");
+		nOfelement = sc.nextInt();
+		
+		arr = new int[nOfelement][nOfelement];
+		
+	}
+	
+	public void createGraph() {
+		
+		for(int i=0; i<nOfelement; i++) {		//rows
+			
+			System.out.println("Enter adjacency of "+(i+1) +" : ");
+			
+			for (int j=0; j<nOfelement; j++) {		// column
+				
+				System.out.println("\t\t"+(i+1) +" : "+ (j+1));
+				int value = sc.nextInt();
+				
+				if(value == 1 || value == 0) {
+					arr[i][j] = value;
+				}else {
+					System.out.println("entered value cannot acceptable. ");
+				}
+			}
+			
+		}
+		
+	}
+	
+	public void displayMatrix() {
+		System.out.println("********************************************");
+		for(int i=0; i<nOfelement; i++) {
+			for(int j=0; j<nOfelement; j++) {
+				System.out.print(" "+arr[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println("********************************************");
+	}
+	
+	public void DepthFirstSearch() {
+		int i=0, j=0, k=0;
+		int visited[] = new int[nOfelement];
+		
+		for(i=0; i<nOfelement; i++) { 	// this loop set 0 at all indexes of visited array
+			visited[i] = 0;
+		}
+		
+		for(i=0; i< nOfelement; i++) {
+			
+			if(visited[i] == 0) {
+				System.out.println(" "+(i));
+			}
+			visited[i] = 1;		// i = 0
+			k=i;				// k = 0  
+			
+			for(j=0; j<nOfelement; ) {
+				
+				if(arr[j][k] != 0) {
+					if(visited[j] == 0) {
+						System.out.println(" "+(j));
+						visited[j] = 1;
+						k=j;
+						j=0;
+					}else {
+						j++;
+					}
+				}else {
+					j++;
+				}
+			}//j for loop
+			
+		}//i for loop
+		
+		// to print remaining nodes of arr
+		for(; i<nOfelement; i++) {
+			System.out.println(" "+(i+1));
+		}
+	}//class dfs
+	
+
+	public void BreadthFirstSearch() {
+		int i=0, j=0;
+		int visited[] = new int[nOfelement];
+		
+		for(i=0; i<nOfelement; i++) { 
+			visited[i] = 0;
+		}
+		
+		System.out.println(" 1");
+		for(i=0; i<nOfelement; i++) { 
+			visited[i] = 1;
+			
+			for(j=0; j<nOfelement; ) {
+				if(arr[i][j] != 0) {  
+					if(visited[j] == 0) {
+						System.out.println(" "+(j+1));
+						visited[j] = 1;
+					}else {
+						j++;
+					}
+				}else {
+					j++;
+				}
+			}//for loop of j
+			
+		}// for loop of i
+		
+	}//class bfs
+	
+}
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+package graph;
+
+import java.util.Scanner;
+
+public class MainGraph {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc =new Scanner(System.in);
+		GraphUndirected gu = new GraphUndirected();
+		
+		int choice = 0;
+	
+		do {
+			System.out.println("-----------------------------------------------------------------");
+			System.out.println("\t1.create Graph\n\t2.display matrix\n\t3.DFS\n\t4.BFS\n\t0.Exit");
+			System.out.println("Enter your choice - ");
+			choice = sc.nextInt();
+			
+			switch(choice) {
+			case 1:
+				gu.createGraph();
+				break;
+			case 2:
+				gu.displayMatrix();
+				break;
+			case 3:
+				System.out.println("***************dfs");
+				gu.DepthFirstSearch();
+				System.out.println("**********************");
+				break;
+			case 4:
+				System.out.println("***************bfs");
+				gu.BreadthFirstSearch();
+				System.out.println("**********************");
+			case 0:
+				System.exit(choice);
+				break;
+				
+			}
+			
+		}while(choice != 0);
+	}
+
+}
