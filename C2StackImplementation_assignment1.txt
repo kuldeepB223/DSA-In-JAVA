@@ -1,0 +1,222 @@
+package c2stackImplementation;
+
+import java.util.Scanner;
+
+public class C2StackImplementation {
+	private int top1;
+	private int top2;
+	private int size;
+	private int[] stk;
+	Scanner sc=new Scanner(System.in);
+	
+	public C2StackImplementation()
+	{
+		top1=-1;
+		top2=size;
+		stk=new int[size];
+	}
+	public void initStack()
+	{
+		System.out.println("enter size of stack");
+		size=sc.nextInt();
+		top1=-1;
+		top2=size;
+		stk=new int[size];
+	}
+	public boolean isFull()
+	{
+		if(top2==top1+1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public boolean isEmpty()
+	{
+		if(top1==-1&&top2==size)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+			
+	}
+	public void push1(int value)
+	{
+		if(!isFull())
+		{
+		top1++;
+		stk[top1]=value;
+		}
+		else
+		{
+			System.out.println("Stack overflow");
+		}
+	}
+	public void push2(int value)
+	{
+		if(!isFull())
+		{
+		top2--;
+		stk[top2]=value;
+		}
+		else
+		{
+			System.out.println("Stack overflow");
+		}
+	}
+	public int pop1()
+	{
+		int val=-1;
+		if(!isEmpty())
+		{
+			val=stk[top1];
+			top1--;
+			
+			if(top1==-1)
+			{
+				System.out.println("stack underflow");
+			}
+		}
+		
+		else
+		{
+			System.out.println("stack underflow");
+		}
+		return val;
+	}
+	public int pop2()
+	{
+		int val=-1;
+		if(!isEmpty())
+		{
+			val=stk[top2];
+			top2++;
+			if(top2==size)
+			{
+				System.out.println("stack underflow");
+			}
+		}
+		else
+		{
+			System.out.println("stack underflow");
+		}
+		return val;
+	}
+	public void display1()
+	{
+		if(!isEmpty())
+		{
+		for(int i=top1;i>-1;i--)
+		{
+			System.out.print(" "+stk[i]);
+		}
+		}
+		else
+		{
+			System.out.println("stack underflow");
+		}
+			
+	}
+	public void display2()
+	{
+		if(!isEmpty())
+		{
+		for(int i=top2;i<size;i++)
+		{
+			System.out.print(" "+stk[i]);
+		}
+		}
+		else
+		{
+			System.out.println("stack underflow");
+		}
+			
+	}
+
+
+}
+-----------------------------------------------------------------------------------------
+package c2stackImplementation;
+
+import java.util.Scanner;
+
+public class C2StackImplementationMain {
+	public static void main(String[] args) {
+
+		C2StackImplementation c2=new C2StackImplementation();
+		
+		Scanner sc=new Scanner(System.in);
+		
+		int value,option;
+		
+		do 
+		{
+			System.out.println("-----menu-------");
+			System.out.println("\n1 instantiate"+"\n2 push1"+"\n3 push2"+"\n4 pop1"+"\n5 pop2"+"\n6 display1");
+			
+			System.out.println("enter your choice");
+			option=sc.nextInt();
+			
+			switch(option)
+			{
+			case 1:
+				c2.initStack();
+				System.out.println("stack is instantiated");
+				break;
+				
+			case 2:
+				System.out.println("enter the values to push");
+				value=sc.nextInt();
+				c2.push1(value);
+				break;
+			case 3:
+				System.out.println("enter the values to push");
+				value=sc.nextInt();
+				c2.push2(value);
+				break;
+				
+			case 4 :
+				
+				value=c2.pop1();
+				if(value==-1)
+				{
+					System.out.println("stack is empty");
+				}
+				else
+				{
+				System.out.println(value+" popped");
+				}
+				break;
+				
+			case 5:
+				value=c2.pop2();
+				if(value==-1)
+				{
+					System.out.println("stack is empty");
+				}
+				else
+				{
+				System.out.println(value+" element popped");
+				}
+				break;
+			case 6:
+				   System.out.println("first half");
+				   c2.display1();
+				   System.out.println("-------------------------------------");
+				   System.out.println("Second half");
+				   c2.display2();
+				   break;
+			case 0:
+				System.exit(0);
+			}
+		} while(option!=0);
+	
+	}
+
+}

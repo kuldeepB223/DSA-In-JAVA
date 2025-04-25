@@ -1,0 +1,160 @@
+package c2stackString;
+
+import java.util.Scanner;
+
+public class StringReverseMain {
+
+	public static void main(String[] args) {
+		
+		
+		int size;
+		Scanner sc= new Scanner(System.in);
+		String str;
+		System.out.println("Enter String: ");
+		str=sc.next();
+		StringReverse rs = new StringReverse(size=2*str.length());
+		
+		rs.push1(str);
+		rs.display1();
+		System.out.println("-----------------------------------------");
+		rs.display2();
+	}
+
+} // Main function
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+package c2stackString;
+
+public class StringReverse {
+	
+	private int size;
+	private int top1;
+	private int top2;
+	private char[] arr;
+	
+	public StringReverse()
+	{
+		size = 0;
+		top1 = -1;
+		top2 = size;
+		arr = new char[size];
+	}
+	
+	public StringReverse(int size)
+	{
+		this.size = size;
+		top1 = -1;
+		top2 = size;
+		arr = new char[size];
+	}
+	
+	public boolean isfull()
+	{
+		if(top2==top1+1)
+			return true;
+		else
+			return false;
+	}
+	
+	public boolean isEmpty()
+	{
+		if(top1==-1 && top2==size)
+			return true;
+		else
+			return false;
+	}
+	
+	public void push1(String name)
+	{
+		for(int i=0;i<name.length();i++)
+		{
+			char ch = name.charAt(i);
+			if(!isfull())
+			{	
+				top1++;
+				arr[top1]=ch;
+			}else
+				System.out.println("Stack Overflow...");			
+		}
+		push2(name);
+	}
+	
+	public void push2(String name)
+	{
+		for(int i=name.length()-1;i>=0;i--)
+		{
+			char ch = name.charAt(i);
+			if(!isfull())
+			{
+				top2--;
+				arr[top2]=ch;
+			}else
+				System.out.println("Stack Overflow...");			
+		}
+		
+	}
+	
+	public int pop1()
+	{
+		char value = '\0';
+		
+		if(!isEmpty())
+		{
+			if(top1!=-1)
+			{
+				value=arr[top1];
+				top1--;				
+			}
+			else
+				System.out.println("Stack UnderFlow...");
+		}
+		else
+		{
+			System.out.println("Stack is Empty.....");
+		}
+		return value;
+	}
+	
+	public int pop2()
+	{
+		char value = '\0';
+		
+		if(!isEmpty())
+		{
+			if(top2!=size)
+			{
+				value=arr[top1];
+				top2++;				
+			}else
+				System.out.println("Stack UnderFlow...");
+		}
+		else
+		{
+			System.out.println("Stack is Empty.....");
+		}
+		return value;
+	}
+	
+	public void display1()
+	{
+		for(int i=top1;i>=0;i--)
+		{
+			System.out.println(arr[i]+" ");
+		}
+	}
+	
+	public void display2()
+	{
+		for(int i=top2;i<size;i++)
+		{
+			System.out.println(arr[i]+" ");
+		}
+	}
+}
+
+
+
